@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftRide - Beginner-Friendly Ride Sharing App</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="nav-logo">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <span>Swift<span>Ride</span></span>
+            </a>
+            
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link active" id="link-home">Home</a>
+                <a href="#" class="nav-link hidden" id="link-rider-dash">Rider Portal</a>
+                <a href="#" class="nav-link hidden" id="link-driver-dash">Driver Portal</a>
+
+                <a href="#" class="nav-link" id="link-login">Login</a>
+                <a href="#" class="btn btn-primary" id="link-register">Register</a>
+                
+                <!-- Logged in status header details -->
+                <div class="user-profile-menu hidden" id="user-profile-menu">
+                    <span class="user-name" id="nav-username">Rider</span>
+                    <button class="btn btn-outline-danger" id="logout-btn" style="padding: 6px 12px; font-size: 0.85rem;">
+                        <i class="fa-solid fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <main class="main-content">
+        
+        <!-- ==================== VIEW 1: LANDING PAGE ==================== -->
+        <section class="view-section" id="view-home">
+            <div class="container grid grid-2-col hero-grid">
+                <div class="hero-text-box">
+                    <h1 class="heading-primary">Your Ride, Your Way. Instantly.</h1>
+                    <p class="hero-description">
+                        Experience smooth, local traveling. SwiftRide connects riders with mock local drivers in seconds. Simple, interactive dashboard designed for college project demonstrations.
+                    </p>
+                    <div class="hero-cta-box">
+                        <button class="btn btn-primary btn-lg" id="cta-book-ride"><i class="fa-solid fa-location-arrow"></i> Book a Ride</button>
+                        <button class="btn btn-outline btn-lg" id="cta-drive"><i class="fa-solid fa-car"></i> Start Driving</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Simulated Trips</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Local Storage</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">RE</span>
+                            <span class="stat-label">Local Currency</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-img-box">
+                    <div class="hero-bg-blob"></div>
+                    <svg viewBox="0 0 500 400" class="hero-illustration" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 50 350 L 450 350" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 80 320 L 420 320" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" stroke-dasharray="10,15"/>
+                        <g transform="translate(140, 240)">
+                            <ellipse cx="100" cy="85" rx="90" ry="12" fill="#000" opacity="0.15"/>
+                            <path d="M 15 65 L 25 40 Q 40 25 70 25 L 130 25 Q 160 25 175 40 L 185 65 Q 195 70 190 80 L 10 80 Q 5 70 15 65 Z" fill="url(#grad1)"/>
+                            <circle cx="45" cy="80" r="18" fill="#1e293b"/>
+                            <circle cx="45" cy="80" r="8" fill="#f8fafc"/>
+                            <circle cx="145" cy="80" r="18" fill="#1e293b"/>
+                            <circle cx="145" cy="80" r="8" fill="#f8fafc"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-container container">
+                <div class="section-title text-center">
+                    <span class="sub-title">Why SwiftRide</span>
+                    <h2>Demonstration Features</h2>
+                </div>
+                <div class="grid grid-4-col features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-box bg-indigo">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3>Local Storage</h3>
+                        <p>No backend server required. Your accounts, rides, and logs run in your browser storage.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box bg-cyan">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h3>OTP Login</h3>
+                        <p>Simulates double-factor security. Random 4-digit code alerts on verification logins.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box bg-purple">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+                        <h3>Simulated Payments</h3>
+                        <p>Supports Card, UPI, and Cash payments producing printable transaction receipts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box bg-pink">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>College Project Code</h3>
+                        <p>Clean, separate styles, easy to run, and pre-packaged with a demo JDBC Java file.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 2: AUTH SECTION (LOGIN / REGISTER) ==================== -->
+        <section class="view-section hidden" id="view-auth">
+            <div class="container auth-container">
+                
+                <!-- LOGIN CARD -->
+                <div class="auth-card hidden" id="card-login">
+                    <h2 class="form-title">Login</h2>
+                    <p class="form-subtitle">Access your rider or driver dashboard.</p>
+                    
+                    <div class="role-selector-container">
+                        <label class="role-option">
+                            <input type="radio" name="login-role" value="rider" checked id="login-role-rider">
+                            <div class="role-card">
+                                <i class="fa-solid fa-user"></i><span>Rider</span>
+                            </div>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="login-role" value="driver" id="login-role-driver">
+                            <div class="role-card">
+                                <i class="fa-solid fa-car"></i><span>Driver</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <form id="form-login">
+                        <div class="form-group">
+                            <label for="login-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                            <input type="email" id="login-email" placeholder="student@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password"><i class="fa-solid fa-lock"></i> Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                        <p style="margin-top: 16px; font-size: 0.85rem; text-align: center;">
+                            Don't have an account? <a href="#" id="auth-link-register" class="text-indigo">Register here</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- REGISTER CARD -->
+                <div class="auth-card hidden" id="card-register">
+                    <h2 class="form-title">Register</h2>
+                    <p class="form-subtitle">Join us as a Rider or a Driver.</p>
+
+                    <div class="role-selector-container">
+                        <label class="role-option">
+                            <input type="radio" name="reg-role" value="rider" checked id="reg-role-rider">
+                            <div class="role-card">
+                                <i class="fa-solid fa-user"></i><span>Rider</span>
+                            </div>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="reg-role" value="driver" id="reg-role-driver">
+                            <div class="role-card">
+                                <i class="fa-solid fa-car"></i><span>Driver</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <form id="form-register">
+                        <div class="form-group">
+                            <label for="reg-name"><i class="fa-solid fa-user"></i> Full Name</label>
+                            <input type="text" id="reg-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                            <input type="email" id="reg-email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                            <input type="tel" id="reg-phone" placeholder="9876543210" required pattern="[0-9]{10}">
+                        </div>
+
+                        <!-- Driver Fields -->
+                        <div class="driver-fields hidden" id="reg-driver-fields">
+                            <div class="form-group">
+                                <label for="reg-vehicle-type"><i class="fa-solid fa-car-side"></i> Vehicle Type</label>
+                                <select id="reg-vehicle-type">
+                                    <option value="Bike">Bike</option>
+                                    <option value="Car">Car</option>
+                                    <option value="SUV">SUV</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-vehicle-number"><i class="fa-solid fa-id-card"></i> Vehicle Number</label>
+                                <input type="text" id="reg-vehicle-number" placeholder="NY-1234">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-password"><i class="fa-solid fa-lock"></i> Password</label>
+                            <input type="password" id="reg-password" placeholder="Min 6 characters" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-password"><i class="fa-solid fa-lock"></i> Confirm Password</label>
+                            <input type="password" id="reg-confirm-password" placeholder="Re-enter password" required minlength="6">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                        <p style="margin-top: 16px; font-size: 0.85rem; text-align: center;">
+                            Already have an account? <a href="#" id="auth-link-login" class="text-indigo">Login here</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- OTP VERIFICATION PROMPT CARD -->
+                <div class="auth-card hidden" id="card-otp">
+                    <h2 class="form-title">Security Verification</h2>
+                    <p class="form-subtitle">Enter the 4-digit code sent to your alert window.</p>
+                    
+                    <div class="otp-input-group">
+                        <input type="text" maxlength="1" class="otp-digit" id="otp1" required>
+                        <input type="text" maxlength="1" class="otp-digit" id="otp2" required>
+                        <input type="text" maxlength="1" class="otp-digit" id="otp3" required>
+                        <input type="text" maxlength="1" class="otp-digit" id="otp4" required>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block" id="btn-verify-otp">Verify Code</button>
+                    <button type="button" class="btn btn-link btn-block" id="btn-resend-otp">Resend OTP</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 3: RIDER DASHBOARD ==================== -->
+        <section class="view-section hidden" id="view-rider">
+            <div class="container dashboard-container grid grid-2-col">
+                
+                <!-- Left: Forms & Active Tracking Column -->
+                <div class="dashboard-left-pane">
+                    <!-- Booking Form Card -->
+                    <div class="card" id="card-booking-form">
+                        <h2 class="card-title"><i class="fa-solid fa-map-location-dot text-indigo"></i> Book a SwiftRide</h2>
+                        <form id="form-booking">
+                            <div class="form-group">
+                                <label for="book-pickup"><i class="fa-solid fa-circle-dot text-success"></i> Pickup Location</label>
+                                <input type="text" id="book-pickup" placeholder="Enter pickup address..." list="pickup-locations" required>
+                                <datalist id="pickup-locations">
+                                    <option value="JFK Airport, Queens, NY"></option>
+                                    <option value="Times Square, Manhattan, NY"></option>
+                                    <option value="Central Park, New York, NY"></option>
+                                    <option value="Grand Central Terminal, NY"></option>
+                                    <option value="Columbia University, NY"></option>
+                                    <option value="LaGuardia Airport, Queens, NY"></option>
+                                    <option value="Newark Liberty International Airport, NJ"></option>
+                                    <option value="Penn Station, Manhattan, NY"></option>
+                                    <option value="Empire State Building, NY"></option>
+                                    <option value="Statue of Liberty Ferry, NY"></option>
+                                    <option value="Wall Street, Financial District, NY"></option>
+                                    <option value="Metropolitan Museum of Art, NY"></option>
+                                    <option value="Brooklyn Bridge Park, Brooklyn, NY"></option>
+                                    <option value="Yankee Stadium, Bronx, NY"></option>
+                                    <option value="Madison Square Garden, NY"></option>
+                                    <option value="Coney Island, Brooklyn, NY"></option>
+                                    <option value="Rockefeller Center, NY"></option>
+                                    <option value="High Line Park, NY"></option>
+                                    <option value="Chelsea Market, NY"></option>
+                                    <option value="Chinatown, Manhattan, NY"></option>
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-drop"><i class="fa-solid fa-location-pin text-danger"></i> Drop Location</label>
+                                <input type="text" id="book-drop" placeholder="Enter destination address..." list="drop-locations" required>
+                                <datalist id="drop-locations">
+                                    <option value="JFK Airport, Queens, NY"></option>
+                                    <option value="Times Square, Manhattan, NY"></option>
+                                    <option value="Central Park, New York, NY"></option>
+                                    <option value="Grand Central Terminal, NY"></option>
+                                    <option value="Columbia University, NY"></option>
+                                    <option value="LaGuardia Airport, Queens, NY"></option>
+                                    <option value="Newark Liberty International Airport, NJ"></option>
+                                    <option value="Penn Station, Manhattan, NY"></option>
+                                    <option value="Empire State Building, NY"></option>
+                                    <option value="Statue of Liberty Ferry, NY"></option>
+                                    <option value="Wall Street, Financial District, NY"></option>
+                                    <option value="Metropolitan Museum of Art, NY"></option>
+                                    <option value="Brooklyn Bridge Park, Brooklyn, NY"></option>
+                                    <option value="Yankee Stadium, Bronx, NY"></option>
+                                    <option value="Madison Square Garden, NY"></option>
+                                    <option value="Coney Island, Brooklyn, NY"></option>
+                                    <option value="Rockefeller Center, NY"></option>
+                                    <option value="High Line Park, NY"></option>
+                                    <option value="Chelsea Market, NY"></option>
+                                    <option value="Chinatown, Manhattan, NY"></option>
+                                </datalist>
+                            </div>
+                            <div class="preset-locations-container">
+                                <span class="preset-label">Popular Shortcuts:</span>
+                                <div class="preset-pills">
+                                    <span class="preset-pill" data-loc="JFK Airport, Queens, NY">✈️ JFK Airport</span>
+                                    <span class="preset-pill" data-loc="Times Square, Manhattan, NY">🏙️ Times Square</span>
+                                    <span class="preset-pill" data-loc="Central Park, New York, NY">🌳 Central Park</span>
+                                    <span class="preset-pill" data-loc="Grand Central Terminal, NY">🚉 Grand Central</span>
+                                    <span class="preset-pill" data-loc="Columbia University, NY">🎓 Columbia Uni</span>
+                                </div>
+                            </div>
+
+                            <label class="form-label-custom">Select Vehicle Type</label>
+                            <div class="vehicle-selector">
+                                <label class="vehicle-option">
+                                    <input type="radio" name="book-vehicle" value="Bike" checked>
+                                    <div class="vehicle-card-item">
+                                        <i class="fa-solid fa-motorcycle"></i>
+                                        <span class="v-name">Bike</span>
+                                        <span class="v-rate">RE 2.0/km</span>
+                                    </div>
+                                </label>
+                                <label class="vehicle-option">
+                                    <input type="radio" name="book-vehicle" value="Car">
+                                    <div class="vehicle-card-item">
+                                        <i class="fa-solid fa-car-side"></i>
+                                        <span class="v-name">Car</span>
+                                        <span class="v-rate">RE 5.0/km</span>
+                                    </div>
+                                </label>
+                                <label class="vehicle-option">
+                                    <input type="radio" name="book-vehicle" value="SUV">
+                                    <div class="vehicle-card-item">
+                                        <i class="fa-solid fa-van-shuttle"></i>
+                                        <span class="v-name">SUV</span>
+                                        <span class="v-rate">RE 8.0/km</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Estimated Fare Details -->
+                            <div class="fare-estimation-card" id="rider-fare-card">
+                                <div class="fare-details">
+                                    <span>Calculated Distance:</span>
+                                    <span class="fare-value" id="ride-est-dist">5.4 km</span>
+                                </div>
+                                <div class="fare-details total-fare">
+                                    <span>Estimated Fare:</span>
+                                    <span class="fare-value highlight" id="ride-est-fare">RE 27.00</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-request-ride">Request Ride</button>
+                        </form>
+                    </div>
+
+                    <!-- Active Ride tracking -->
+                    <div class="card hidden" id="card-rider-active-ride">
+                        <div class="card-header-status">
+                            <h3 class="card-title"><i class="fa-solid fa-location-crosshairs text-indigo animate-pulse"></i> Ride Tracking</h3>
+                            <span class="badge badge-warning" id="rider-active-status">Pending Acceptance</span>
+                        </div>
+
+                        <div class="active-ride-details">
+                            <div class="ride-route-details">
+                                <div class="route-line-decor">
+                                    <div class="dot green"></div>
+                                    <div class="line"></div>
+                                    <div class="dot red"></div>
+                                </div>
+                                <div class="route-text">
+                                    <div class="loc"><small>PICKUP</small><p id="track-pickup">Main St</p></div>
+                                    <div class="loc"><small>DROP</small><p id="track-drop">Drop St</p></div>
+                                </div>
+                            </div>
+
+                            <!-- Assigned Driver details -->
+                            <div class="driver-details-card hidden" id="track-driver-box">
+                                <div class="driver-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                                <div class="driver-meta">
+                                    <h4 id="track-driver-name">Jane Doe</h4>
+                                    <p id="track-driver-vehicle">Car - NY-1234</p>
+                                    <p class="phone"><i class="fa-solid fa-phone"></i> <span id="track-driver-phone">9876543210</span></p>
+                                </div>
+                            </div>
+
+                            <div class="ride-fare-meta">
+                                <span>Amount: <strong class="text-indigo" id="track-fare">RE 0.00</strong></span>
+                            </div>
+
+                            <!-- Controls -->
+                            <button class="btn btn-outline-danger btn-block" id="btn-rider-cancel">Cancel Request</button>
+
+                            <!-- Payments simulation Panel -->
+                            <div class="payment-panel hidden" id="rider-pay-box">
+                                <h4 class="payment-title"><i class="fa-solid fa-credit-card"></i> Pay Driver</h4>
+                                <p class="payment-subtitle">Choose payment method to complete transaction.</p>
+                                <div class="payment-methods-grid">
+                                    <label class="pay-method-option">
+                                        <input type="radio" name="ride-payment-method" value="Card" checked>
+                                        <div class="pay-card"><i class="fa-solid fa-credit-card"></i><span>Card</span></div>
+                                    </label>
+                                    <label class="pay-method-option">
+                                        <input type="radio" name="ride-payment-method" value="UPI">
+                                        <div class="pay-card"><i class="fa-solid fa-mobile-screen-button"></i><span>UPI</span></div>
+                                    </label>
+                                    <label class="pay-method-option">
+                                        <input type="radio" name="ride-payment-method" value="Cash">
+                                        <div class="pay-card"><i class="fa-solid fa-money-bill-wave"></i><span>Cash</span></div>
+                                    </label>
+                                </div>
+                                <button type="button" class="btn btn-success btn-block" id="btn-pay-now">Pay Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Map Card & Ride History Logs -->
+                <div class="dashboard-right-pane">
+                    <!-- Map Card -->
+                    <div class="card" id="rider-map-card" style="padding: 20px;">
+                        <h3 class="card-title"><i class="fa-solid fa-map text-indigo"></i> Live Ride Map</h3>
+                        <div id="rider-map" style="height: 380px; width: 100%; border-radius: 12px; background: #cbd5e1; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);">
+                            <div class="map-placeholder-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--text-secondary);">
+                                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 8px; color: var(--primary);"></i>
+                                <p>Loading Google Maps...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History logs logs -->
+                    <div class="card history-card" id="rider-history-card">
+                        <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left text-purple"></i> Ride Logs</h3>
+                        <div class="table-responsive">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>Route</th>
+                                        <th>Fare</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rider-history-table-body">
+                                    <tr>
+                                        <td colspan="3" class="text-center text-muted">No rides logged.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== VIEW 4: DRIVER DASHBOARD ==================== -->
+        <section class="view-section hidden" id="view-driver">
+            <div class="container dashboard-container grid grid-2-col">
+                
+                <!-- Left: Profile & Switcher -->
+                <div class="dashboard-left-pane">
+                    <div class="card driver-profile-card">
+                        <div class="driver-profile-header">
+                            <div class="driver-large-avatar"><i class="fa-solid fa-car"></i></div>
+                            <div>
+                                <h2 class="driver-title-name" id="drv-name-lbl">Driver Name</h2>
+                                <p class="driver-subtitle-vehicle" id="drv-vehicle-lbl">Car - NY-1234</p>
+                            </div>
+                        </div>
+
+                        <div class="driver-status-switch-box">
+                            <span class="status-label">Duty Switch:</span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="driver-duty-toggle">
+                                <label for="driver-duty-toggle"></label>
+                            </div>
+                            <span class="status-text text-muted" id="driver-duty-lbl">OFFLINE</span>
+                        </div>
+
+                        <div class="driver-stats-grid">
+                            <div class="driver-stat-card">
+                                <span class="stat-num text-indigo" id="drv-earnings-lbl">RE 0.00</span>
+                                <span class="stat-desc">Earnings</span>
+                            </div>
+                            <div class="driver-stat-card">
+                                <span class="stat-num text-purple" id="drv-trips-lbl">0</span>
+                                <span class="stat-desc">Jobs Done</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Job list & requests panel -->
+                <div class="dashboard-right-pane">
+                    
+                    <!-- Driver Map Card -->
+                    <div class="card hidden" id="driver-map-card" style="padding: 16px;">
+                        <h3 class="card-title"><i class="fa-solid fa-map text-indigo"></i> Job Navigation Map</h3>
+                        <div id="driver-map" style="height: 320px; width: 100%; border-radius: 12px; background: #cbd5e1; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.06);">
+                            <div class="map-placeholder-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--text-secondary);">
+                                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 8px; color: var(--primary);"></i>
+                                <p>Loading Google Maps...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scan radar -->
+                    <div class="card hidden" id="card-driver-radar">
+                        <h3 class="card-title"><i class="fa-solid fa-satellite-dish text-pink animate-pulse"></i> Search Radar</h3>
+                        <div class="empty-requests-state">
+                            <div class="radar-animation">
+                                <div class="circle c1"></div>
+                                <div class="circle c2"></div>
+                                <div class="circle c3"></div>
+                                <i class="fa-solid fa-car-side central-icon"></i>
+                            </div>
+                            <p style="margin-top: 12px;">Scanning for passenger requests matching vehicle...</p>
+                        </div>
+                    </div>
+
+                    <!-- Driver Active Job -->
+                    <div class="card hidden" id="card-driver-active-job">
+                        <h3 class="card-title"><i class="fa-solid fa-crosshairs text-success"></i> Active Job Details</h3>
+                        <div class="active-job-details">
+                            <div class="rider-info-box">
+                                <div class="rider-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="rider-meta">
+                                    <h4 id="job-rider-name">Rider Name</h4>
+                                    <p class="phone"><i class="fa-solid fa-phone"></i> <span id="job-rider-phone">0000</span></p>
+                                </div>
+                            </div>
+                            <div class="ride-route-details">
+                                <div class="route-line-decor">
+                                    <div class="dot green"></div>
+                                    <div class="line"></div>
+                                    <div class="dot red"></div>
+                                </div>
+                                <div class="route-text">
+                                    <div class="loc"><small>PICKUP</small><p id="job-pickup">Main St</p></div>
+                                    <div class="loc"><small>DROP</small><p id="job-drop">Drop St</p></div>
+                                </div>
+                            </div>
+                            
+                            <p>Fare Value: <strong class="text-success" id="job-fare">RE 0.00</strong></p>
+                            
+                            <div class="job-actions-grid">
+                                <button class="btn btn-info btn-block" id="btn-job-arrive">Arrived at Pickup</button>
+                                <button class="btn btn-primary btn-block hidden" id="btn-job-start">Start Ride</button>
+                                <button class="btn btn-success btn-block hidden" id="btn-job-complete">Complete Ride</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Match Requests (Simulated requests display list) -->
+                    <div class="card hidden" id="card-driver-requests-list">
+                        <h3 class="card-title">Pending Offers</h3>
+                        <div class="requests-list" id="driver-requests-container">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PAYMENT SUCCESS modal -->
+    <div class="modal-overlay hidden" id="payment-success-modal">
+        <div class="modal-card">
+            <div class="modal-success-icon animate-success"><i class="fa-solid fa-check"></i></div>
+            <h2 class="modal-title">Ride Paid Successfully!</h2>
+            <p class="modal-subtitle">Thank you for riding with SwiftRide. Your transaction has processed.</p>
+            
+            <div class="receipt-details">
+                <div class="receipt-row">
+                    <span>Transaction ID:</span>
+                    <strong id="receipt-txn-id">TXN-XXXXXX</strong>
+                </div>
+                <div class="receipt-row">
+                    <span>Payment Method:</span>
+                    <strong id="receipt-method">UPI</strong>
+                </div>
+                <div class="receipt-row amount-row">
+                    <span>Total Amount Paid:</span>
+                    <strong class="text-success" id="receipt-amount">RE 0.00</strong>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btn-close-receipt">Close</button>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 SwiftRide Inc. Student Demonstration Mock Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
